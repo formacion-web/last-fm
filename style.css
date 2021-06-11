@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/* Fuente:
+    font-family:Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif;
+
+*/
+body {
+  font-family: Open Sans, Lucida Grande, Helvetica Neue, Helvetica, Arial, Sans-serif;
+}
+
+header {
+  background-color: #222120;
+  text-align: center;
+}
+
+header > img {
+  width: 25px;
+  height: 5px;
+}
+
+/* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
+ */
+li {
+  list-style: none;
+}
+
+.bckimage {
+  width: 25px;
+  height: 25px;
+  padding: 1px 1px;
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
+  color: white;
+  border: none;
+  font-size: 5px;
+}
+
+.bckimage_rock {
+  background-image: url("https://lastfm.freetls.fastly.net/i/u/avatar300s/366962d5733a4aee8bee4a136c239d47.jpg");
+  filter: sepia(90%);
+}
+.bckimage_hip-hop {
+  background-image: url("https://lastfm.freetls.fastly.net/i/u/avatar300s/51810a59cb17449bb2d6b8b62d63ce78.jpg");
+  filter: contrast(200%);
+}
+.bckimage_indie {
+  background-image: url("https://lastfm.freetls.fastly.net/i/u/avatar300s/c825233e09af4641a5ce7b6ece883aae.jpg");
+  filter: grayscale(50%);
+}
+.bckimage_jazz {
+  background-image: url("https://lastfm.freetls.fastly.net/i/u/avatar300s/c0a9af93c8c843afb43cd6dc24b0bbf3.jpg");
+  filter: hue-rotate(90deg);
+}
+.bckimage_reggae {
+  background-image: url("https://lastfm.freetls.fastly.net/i/u/avatar300s/94428d295a60403e9327cbfb86e2fbf6.jpg");
+  filter: sepia(90%);
+}
+.bckimage:hover {
+  cursor: pointer;
+}
+
+.filter_list {
+  font-size: 5px;
+}
+
+.filter_list:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
