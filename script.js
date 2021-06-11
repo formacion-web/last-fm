@@ -82,13 +82,19 @@ const updateMenuItem = (string) => {
 
 }
 
+const  initElementsDOM= () =>{
+    mItemSelected = document.getElementsByClassName('menu-item-selected');
+    overview = document.getElementsByClassName('overview');
+
+}
+
 const init = () => {
     try {
-        mItemSelected = document.getElementsByClassName('menu-item-selected');
-        overview = document.getElementsByClassName('overview');
+
+        //init elements
+        initElementsDOM();
 
         updateMenuItem(overview[0].textContent);
-
         fetchJSON(loadSongs, "./music.json");
 
         // let response = await fetch("./music.json");
