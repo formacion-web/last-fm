@@ -4,14 +4,16 @@
 
 */
 body {
-  font-family: Open Sans, Lucida Grande, Helvetica Neue, Helvetica, Arial, Sans-serif;
+  font-family: "Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif";
+  display: grid;
+  gap: 5px;
 }
 
 header {
   background-color: #222120;
   text-align: center;
+  height: 19px;
 }
-
 header > img {
   width: 25px;
   height: 5px;
@@ -19,8 +21,21 @@ header > img {
 
 /* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
  */
-li {
-  list-style: none;
+.filters, .genere {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+
+.genere > button {
+  margin: 2px;
+}
+
+.filters > ul {
+  margin: 0px;
+  padding: 0px;
 }
 
 .bckimage {
@@ -63,11 +78,37 @@ li {
 }
 
 .filter_list {
+  list-style: none;
   font-size: 5px;
 }
 
+.filter_list {
+  display: inline-block;
+}
+.filter_list > a {
+  text-decoration: none;
+}
 .filter_list:hover {
   cursor: pointer;
+}
+.filter_list_actived {
+  color: #B90000;
+}
+.filter_list_inactived {
+  color: #222;
+}
+
+.menu-item-selected {
+  font-size: 8px;
+}
+
+.lista {
+  font-size: 5px;
+}
+.lista > li {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
 }
 
 /*# sourceMappingURL=style.css.map */

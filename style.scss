@@ -32,25 +32,55 @@ $filter_reggae: saturate(10%);
 
 */
 body{
-    font-family:Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif;
+    font-family:"Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif";
+    display:grid;
+    gap: 5px;
 }
 
 
 header{
     background-color: $color-background-header;
     text-align: center;
+    height: 19px;
+    >img{
+        width: 25px;
+        height: 5px;
+    }
 }
 
-header>img{
-    width: 25px;
-    height: 5px;
-}
 /* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
  */
 
-li{
-    list-style:none;
+ %genere_filters{
+     display: flex;
+     flex-flow: row wrap;
+     justify-content: center;
+     align-items: center;
+     height: 30px;
+       
+
+ }
+
+.genere{
+    @extend %genere_filters;
+
+    >button{
+        margin: 2px;
+    }
 }
+
+.filters{
+    @extend %genere_filters;
+    >ul{
+        margin:0px;
+        padding:0px;
+
+    }
+
+}
+  
+   
+
 
 %bckgroundimage{
 
@@ -98,13 +128,38 @@ li{
 }
 
 %filter_list{
-
+    list-style:none;
     font-size: 5px;
 }
 
 .filter_list{
     @extend %filter_list;
+    display: inline-block;
+    >a{
+        text-decoration:none;;
+    }
+    
     &:hover {
         cursor:pointer; 
+    }
+    &_actived{
+        color: $color-focus-menu;
+    }
+    &_inactived{
+        color: $color-primary;
+    }
+}
+
+.menu-item-selected{
+    font-size: 8px;
+}
+
+.lista{
+    font-size: 5px;
+    > li{
+        display: flex;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+        
     }
 }
