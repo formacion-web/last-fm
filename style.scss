@@ -33,8 +33,7 @@ $filter_reggae: saturate(10%);
 */
 body{
     font-family:"Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif";
-    display:grid;
-    gap: 5px;
+ 
 }
 
 
@@ -56,7 +55,7 @@ header{
      flex-flow: row wrap;
      justify-content: center;
      align-items: center;
-     height: 30px;
+    
        
 
  }
@@ -96,7 +95,7 @@ header{
     border: none;
 
     font-size: 5px;
-   
+    box-sizing: content-box;
 
 }
 
@@ -156,10 +155,22 @@ header{
 
 .lista{
     font-size: 5px;
-    > li{
+    >li{
         display: flex;
         justify-content: flex-start;
         flex-flow: row wrap;
+       
         
+        
+    }
+    >li>a{
+        margin: 0px 5px;
+    }
+    >li>div{
+        margin-left: auto; 
+        margin-right: 0;
+    }
+    >li.odd{
+       background-color:$color-list-odd;
     }
 }
