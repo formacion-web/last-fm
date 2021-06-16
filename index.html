@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>clon-last.fm</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <script defer src="script.js"></script>
 </head>
 
@@ -21,28 +21,26 @@
     <main>
         <section class="genero">
             <ul class="list-genero">
-                <li><img src="https://lastfm.freetls.fastly.net/i/u/avatar300s/366962d5733a4aee8bee4a136c239d47.jpg" alt="Rock"> Rock</li>
-                <li><img src="https://lastfm.freetls.fastly.net/i/u/avatar300s/51810a59cb17449bb2d6b8b62d63ce78.jpg" alt="hip hop">  Hip-hop</li>
-                <li><img src="https://lastfm.freetls.fastly.net/i/u/avatar300s/c825233e09af4641a5ce7b6ece883aae.jpg" alt="Indie"> Indie</li>
-                <li><img src="https://lastfm.freetls.fastly.net/i/u/avatar300s/c0a9af93c8c843afb43cd6dc24b0bbf3.jpg" alt="jazz"> Jazz</li>
-                <li><img src=" https://lastfm.freetls.fastly.net/i/u/avatar300s/94428d295a60403e9327cbfb86e2fbf6.jpg" alt="reggae"> Reggae</li>
+                <li>
+                    <a href="#lista-song" class="link link_1" data-genre="rock">Rock </a>
+                    <img style="filter: sepia(90%);" src="https://lastfm.freetls.fastly.net/i/u/avatar300s/366962d5733a4aee8bee4a136c239d47.jpg"  alt="Rock">        
+                </li>
+                <li><a href="#lista-song" class="link link_2" data-genre="hip-hop">Hip-hop</a><img style="filter: contrast(200%);" src="https://lastfm.freetls.fastly.net/i/u/avatar300s/51810a59cb17449bb2d6b8b62d63ce78.jpg"  alt="hip hop"></li>
+                <li><a href="#lista-song" class="link link_3" data-genre="indie"> Indie</a><img style="filter:grayscale(50%);" src="https://lastfm.freetls.fastly.net/i/u/avatar300s/c825233e09af4641a5ce7b6ece883aae.jpg" alt="Indie"></li>
+                <li><a href="#lista-song" class="link link_4" data-genre="jazz">Jazz</a><img style="filter: hue-rotate(90deg);" src="https://lastfm.freetls.fastly.net/i/u/avatar300s/c0a9af93c8c843afb43cd6dc24b0bbf3.jpg"  alt="jazz"> </li>
+                <li><a href="#lista-song" class="link link_5" data-genre="reggae"> Reggae</a><img style="filter: saturate(10%);" src="https://lastfm.freetls.fastly.net/i/u/avatar300s/94428d295a60403e9327cbfb86e2fbf6.jpg"  alt="reggae"></li>
             </ul>
         </section>
         <section class="filter">
             <ul>
-                <li><a href="">Overview</a></li>
-                <li><a href="">Top 10 listeners</a></li>
-                <li><a href="">The Biggest</a></li>
+                <li><a class=" overview" href="#lista-song">Overview</a></li>
+                <li><a class=" top" href="#lista-song">Top 10 listeners</a></li>
+                <li><a class=" biggest" href="#lista-song">The Biggest</a></li>
             </ul>
         </section>
-        <section class="list-songs">
-            <ol class="lista">
-                <li class="far fa-play-circle">
-                    <a class="group-name" title="Ir al Grupo" href="https://www.last.fm/music/Tame+Impala">Tame
-                        Impala</a>
-                    <a class="song-title">The Less I Know the Better</a>
-                    <div class="listeners">439958</div>
-                </li>
+        <h2 id="lista-song" class=menu-item-selected></h2>
+        <section  class="section-list-song">
+            <ol  class="lista">
             </ol>
         </section>
     </main>
