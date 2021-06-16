@@ -7,7 +7,7 @@
 class Song {
     constructor() {
     }
-    
+
     setItemLi(element, odd) {
         let txtHTML = this.getNewElement(this.group, this.url_group, this.title, this.listeners, odd)
         element[0].insertAdjacentHTML("beforeend", txtHTML);
@@ -23,9 +23,9 @@ class Song {
     setListeners(listeners) {
         this.listeners = listeners;
     }
-    getNewElement(group, url, title, listeners, odd=null) {
-        let classood='';
-        if (odd !=null){ classood = (odd)?'odd':''; }
+    getNewElement(group, url, title, listeners, odd = null) {
+        let classood = '';
+        if (odd != null) { classood = (odd) ? 'odd' : ''; }
 
         let txtHTML = `<li class="far fa-play-circle ${classood}">
     <a class="group-name" title="Ir al Grupo" href=${url}>${group}</a>
@@ -37,22 +37,22 @@ class Song {
 
 }
 
-const printSongs = (listOfSongs)=>{
-    
+const printSongs = (listOfSongs) => {
+
     const song = new Song();
-    let i=1;
+    let i = 1;
     listOfSongs.forEach(element => {
         song.setItemSongTitle(element.name);
         song.setListeners(element.listeners);
-        even = (i%2);
-       
+        even = (i % 2);
+
         song.setItemGroupName(element.artist.name, element.artist.url);
-    
+
         song.setItemLi(divItemLista, even);
         i++;
-    
+
     });
-    
+
 }
 
 const loadSongs = (listOfSongs, callback = null) => {
@@ -89,7 +89,7 @@ const sortListened = (listOfSongs) => {
             return b.listeners - a.listeners;
         });
         return listOfSongs;
-        
+
     } catch (error) {
         throw error;
     }
@@ -102,7 +102,7 @@ const sortRanking = (listOfSongs) => {
             return b["@attr"].rank > a["@attr"].rank;
         });
         return listOfSongs;
-        
+
     } catch (error) {
         throw error;
     }
@@ -121,13 +121,13 @@ const loadTenListened = () => {
 
 }
 
-const filterGenre=( listOfSongs, genre) => {
-   
+const filterGenre = (listOfSongs, genre) => {
+
     const result = listOfSongs.filter(element => element.genre == genre);
     return result;
 }
 
-const loadSongsByGener=(listOfSongs, callback = null)=>{
+const loadSongsByGener = (listOfSongs, callback = null) => {
     try {
         if (callback != null) { listOfSongs = callback(listOfSongs) }
         return listOfSongs;
@@ -143,10 +143,10 @@ const loadGenre = async (e) => {
         updateMenuItem(genre);
         initActivedElement();
         removeItems_list('far');
-        listOfSongs = await fetchJSON( loadSongsByGener, jsonName);
-        listOfSongs = filterGenre (listOfSongs, genre);
+        listOfSongs = await fetchJSON(loadSongsByGener, jsonName);
+        listOfSongs = filterGenre(listOfSongs, genre);
         printSongs(listOfSongs);
-        
+
     } catch (error) {
         throw error;
     }
@@ -154,13 +154,13 @@ const loadGenre = async (e) => {
 
 const filterBiggest = (listOfSongs) => {
     try {
-        // listOfSong nmust be sort by ... biggest.
+        
         listOfSongs = sortListened(listOfSongs);
         biggestArtist = listOfSongs[0].artist.name;
         const result = listOfSongs.filter(element => element.artist.name == biggestArtist);
-    
+
         return result;
-        
+
     } catch (error) {
         throw error;
     }
@@ -197,7 +197,7 @@ const updateMenuItem = (string) => {
 
 }
 
-const activateElement=(element)=>{
+const activateElement = (element) => {
     initActivedElement();
     element.classList.replace("filter_list_inactived", "filter_list_actived");
     activedElement = element;
@@ -206,7 +206,7 @@ const activateElement=(element)=>{
 }
 
 const initActivedElement = () => {
-    if (activedElement != undefined){
+    if (activedElement != undefined) {
         activedElement.classList.replace("filter_list_actived", "filter_list_inactived");
     }
 }
@@ -219,7 +219,7 @@ const initElementsDOM = () => {
     divItemLista = document.getElementsByClassName('lista');
 
     genres = document.getElementsByClassName('bckimage');
-    
+
 }
 
 const initEventListener = () => {
@@ -235,7 +235,7 @@ const initEventListener = () => {
     };
 
     if (genres.length != 0) {
-        Array.from(genres).forEach(element =>{
+        Array.from(genres).forEach(element => {
             element.addEventListener("click", loadGenre, false);
         })
     };

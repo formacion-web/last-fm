@@ -4,7 +4,7 @@
 
 */
 body {
-  font-family: "Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif";
+  font-family: "Open Sans", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, Sans-serif;
 }
 
 header {
@@ -107,6 +107,7 @@ header > img {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
+  padding: 2px;
 }
 .lista > li > a {
   margin: 0px 5px;
