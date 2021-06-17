@@ -1,36 +1,181 @@
-/* Colores:
-   $color-primary:  #222
-   $color-secondary: rgba(110, 69, 51, 1);
-   $color-focus-menu: #B90000; 
-   $color-background: #fff;
-   $color-list-odd: #f2f2f2;
+// Colores:
+$color-primary:  #222;
+$color-secondary: rgba(110, 69, 51, 1);
+$color-focus-menu: #B90000; 
+$color-background: #fff;
+$color-list-odd: #f2f2f2;
+$color-background-header:#222120;
    
-*/
 
-/* Imágenes:
-logo: https://www.last.fm/static/images/logo_static_mob.0798d7258e3d.png
-rock: https://lastfm.freetls.fastly.net/i/u/avatar300s/366962d5733a4aee8bee4a136c239d47.jpg
-hip-hop: https://lastfm.freetls.fastly.net/i/u/avatar300s/51810a59cb17449bb2d6b8b62d63ce78.jpg
-indie:https://lastfm.freetls.fastly.net/i/u/avatar300s/c825233e09af4641a5ce7b6ece883aae.jpg
-jazz:https://lastfm.freetls.fastly.net/i/u/avatar300s/c0a9af93c8c843afb43cd6dc24b0bbf3.jpg
-reggae: https://lastfm.freetls.fastly.net/i/u/avatar300s/94428d295a60403e9327cbfb86e2fbf6.jpg
-*/
 
-/* Filtros: 
+// Imágenes:
+$logo: "https://www.last.fm/static/images/logo_static_mob.0798d7258e3d.png";
+$rock: "https://lastfm.freetls.fastly.net/i/u/avatar300s/366962d5733a4aee8bee4a136c239d47.jpg";
+$hip-hop: "https://lastfm.freetls.fastly.net/i/u/avatar300s/51810a59cb17449bb2d6b8b62d63ce78.jpg";
+$indie:"https://lastfm.freetls.fastly.net/i/u/avatar300s/c825233e09af4641a5ce7b6ece883aae.jpg";
+$jazz:"https://lastfm.freetls.fastly.net/i/u/avatar300s/c0a9af93c8c843afb43cd6dc24b0bbf3.jpg";
+$reggae: "https://lastfm.freetls.fastly.net/i/u/avatar300s/94428d295a60403e9327cbfb86e2fbf6.jpg";
 
-rock:   sepia(90%);
-hip-hop:contrast(200%);
-indie:  grayscale(50%);
-jazz:   hue-rotate(90deg);
-reggae: saturate(10%);
 
-*/
+// Filtros: 
+
+$filter_rock:   sepia(90%);
+$filter_hip-hop:contrast(200%);
+$filter_indie:  grayscale(50%);
+$filter_jazz:   hue-rotate(90deg);
+$filter_reggae: saturate(10%);
+
+
 
 /* Fuente:
     font-family:Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif;
 
 */
+body{
+    font-family:"Open Sans","Lucida Grande","Helvetica Neue",Helvetica,Arial,Sans-serif;
+ 
+}
+
+
+header{
+    background-color: $color-background-header;
+    text-align: center;
+    height: 19px;
+    >img{
+        width: 25px;
+        height: 5px;
+    }
+}
 
 /* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
  */
 
+ %genere_filters{
+     display: flex;
+     flex-flow: row wrap;
+     justify-content: center;
+     align-items: center;
+    
+       
+
+ }
+
+.genere{
+    @extend %genere_filters;
+
+    >button{
+        margin: 2px;
+    }
+}
+
+.filters{
+    @extend %genere_filters;
+    >ul{
+        margin:0px;
+        padding:0px;
+
+    }
+
+}
+  
+   
+
+
+%bckgroundimage{
+
+    width: 25px;
+    height: 25px;
+    padding: 1px 1px;
+
+    
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    color:white;
+    border: none;
+
+    font-size: 5px;
+    box-sizing: content-box;
+
+}
+
+.bckimage{
+    @extend %bckgroundimage;
+    &_rock{
+        background-image: url($rock);
+        filter:$filter_rock;
+    }
+    &_hip-hop{
+        background-image: url($hip-hop);
+        filter:$filter_hip-hop;
+    }
+    &_indie{
+        background-image: url($indie);
+        filter:$filter_indie;
+    }
+    &_jazz{
+        background-image: url($jazz);
+        filter:$filter_jazz;
+    }
+    &_reggae{
+        background-image: url($reggae);
+        filter:$filter_rock;
+    }
+    &:hover {
+        cursor:pointer; 
+    }
+}
+
+%filter_list{
+    list-style:none;
+    font-size: 5px;
+}
+
+.filter_list{
+    @extend %filter_list;
+    display: inline-block;
+    >a{
+        text-decoration:none;;
+    }
+    
+    &:hover {
+        cursor:pointer; 
+    }
+    &_actived{
+        color: $color-focus-menu;
+    }
+    &_inactived{
+        color: $color-primary;
+    }
+}
+
+.menu-item-selected{
+    font-size: 8px;
+}
+
+.lista{
+    font-size: 5px;
+    
+   
+
+
+    >li{
+        display: flex;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+        padding:2px;
+      
+        
+    }
+    >li>a{
+        margin: 0px 5px;
+       
+    }
+    >li>div{
+        margin-left: auto; 
+        margin-right: 0;
+    }
+    >li.odd{
+       background-color:$color-list-odd;
+    }
+}
