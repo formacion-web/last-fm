@@ -55,35 +55,15 @@ const printSongs = (listOfSongs) => {
 
 }
 
-const loadSongs = (listOfSongs, callback = null) => {
 
-    try {
-        if (callback != null) { listOfSongs = callback(listOfSongs) }
-        printSongs(listOfSongs);
-
-    } catch (error) {
-        throw error;
-    }
-}
-
-const loadOverview = () => {
-    try {
-        updateMenuItem(activateElement(overview.item(0)));
-        removeItems_list('far');
-        fetchJSON(loadSongs, jsonName, sortListened);
-
-    } catch (error) {
-        throw error;
-    }
-}
-
+//Sorters
 const sortTenListened = (listOfSongs) => {
 
-    return sortListened(listOfSongs).slice(0, 10);
+    return sortListenedByListener(listOfSongs).slice(0, 10);
 
 }
 
-const sortListened = (listOfSongs) => {
+const sortListenedByListener = (listOfSongs) => {
     try {
         listOfSongs.sort(function (a, b) {
             return b.listeners - a.listeners;
@@ -107,7 +87,68 @@ const sortRanking = (listOfSongs) => {
         throw error;
     }
 }
+// Filters
+const filterGenre = (listOfSongs, genre) => {
 
+    const result = listOfSongs.filter(element => element.genre == genre);
+    return result;
+}
+
+const filterBiggestBytotalListeners = (listOfSongs) => {
+
+    const totalListeners = listOfSongs.reduce((total, next) => {
+        // console.log(next.listeners);
+        let name = next.artist.name;
+        let listeners = next.listeners;
+      
+        total[name] = (total[name] || 0) + Number(listeners);
+        return total;
+    }, {});
+
+       //totalListeners = sortListened(totalListeners);
+    console.log(typeof totalListeners);
+    console.log(totalListeners);
+
+    return listOfSongs;
+}
+
+const filterBiggestByFirstSong = (listOfSongs) => {
+    try {
+
+        listOfSongs = sortListenedByListener(listOfSongs);
+        biggestArtist = listOfSongs[0].artist.name;
+        const result = listOfSongs.filter(element => element.artist.name == biggestArtist);
+
+        return result;
+
+    } catch (error) {
+        throw error;
+    }
+
+}
+
+//Loaders
+const loadSongs = (listOfSongs, callback = null) => {
+
+    try {
+        if (callback != null) { listOfSongs = callback(listOfSongs) }
+        printSongs(listOfSongs);
+
+    } catch (error) {
+        throw error;
+    }
+}
+
+const loadOverview = () => {
+    try {
+        updateMenuItem(activateElement(overview.item(0)));
+        removeItems_list('far');
+        fetchJSON(loadSongs, jsonName, sortListenedByListener);
+
+    } catch (error) {
+        throw error;
+    }
+}
 const loadTenListened = () => {
     try {
         updateMenuItem(activateElement(top_10_Listened.item(0)));
@@ -119,12 +160,6 @@ const loadTenListened = () => {
         throw error;
     }
 
-}
-
-const filterGenre = (listOfSongs, genre) => {
-
-    const result = listOfSongs.filter(element => element.genre == genre);
-    return result;
 }
 
 const loadSongsByGener = (listOfSongs, callback = null) => {
@@ -140,9 +175,11 @@ const loadSongsByGener = (listOfSongs, callback = null) => {
 const loadGenre = async (e) => {
     try {
         let genre = e.target.textContent;
+
         updateMenuItem(genre);
         initActivedElement();
         removeItems_list('far');
+
         listOfSongs = await fetchJSON(loadSongsByGener, jsonName);
         listOfSongs = filterGenre(listOfSongs, genre);
         printSongs(listOfSongs);
@@ -152,26 +189,13 @@ const loadGenre = async (e) => {
     }
 }
 
-const filterBiggest = (listOfSongs) => {
-    try {
-        
-        listOfSongs = sortListened(listOfSongs);
-        biggestArtist = listOfSongs[0].artist.name;
-        const result = listOfSongs.filter(element => element.artist.name == biggestArtist);
-
-        return result;
-
-    } catch (error) {
-        throw error;
-    }
-
-}
 
 const loadBiggest = (e) => {
     try {
         updateMenuItem(activateElement(the_biggest.item(0)));
         removeItems_list('far');
-        fetchJSON(loadSongs, jsonName, filterBiggest);
+        // fetchJSON(loadSongs, jsonName, filterBiggestByFirstSong);
+        fetchJSON(loadSongs, jsonName, filterBiggestBytotalListeners);
 
     } catch (error) {
         throw error;
@@ -192,6 +216,7 @@ const fetchJSON = async (callback, url, callback_fetch = null) => {
     }
 }
 
+//DOM
 const updateMenuItem = (string) => {
     mItemSelected.item(0).textContent = string;
 
@@ -258,7 +283,7 @@ const init = () => {
         initEventListener();
 
         updateMenuItem(activateElement(overview.item(0)));
-        fetchJSON(loadSongs, "./music.json", sortListened);
+        fetchJSON(loadSongs, "./music.json", sortListenedByListener);
 
 
     } catch (error) {

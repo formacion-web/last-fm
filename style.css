@@ -97,6 +97,10 @@ header > img {
   color: #222;
 }
 
+.menu-item-selected {
+  margin-left: 30px;
+}
+
 .lista > li {
   display: flex;
   justify-content: flex-start;
