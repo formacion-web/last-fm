@@ -13,7 +13,7 @@
 
 header {
   padding: 30px 0px 10px 0px;
-  background: black;
+  background: #222;
   margin-bottom: 10px; }
   header .content-logo {
     width: 100px;
@@ -82,13 +82,17 @@ img {
         color: #b90000; }
 
 .lista {
-  width: 100%; }
+  width: 100%;
+  counter-reset: counter-songs; }
   .lista li {
     overflow: auto;
     padding: 0px 10px;
     width: 100%; }
-    .lista li span {
+    .lista li .numbers {
       padding-left: 5px; }
+      .lista li .numbers:before {
+        counter-increment: counter-songs;
+        content: counter(counter-songs) ". "; }
     .lista li a {
       text-align: left;
       line-height: 30px;

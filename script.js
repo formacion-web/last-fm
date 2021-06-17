@@ -1,13 +1,13 @@
 class Song {
 
-    static cont = 0;//variable de clase
+    //static cont = 1;//variable de clase
     constructor(datos) {
         this.genre = datos.genre;
         this.group = datos.group;
         this.listeners = datos.listeners;
         this.title = datos.title;
         this.url = datos.url;
-        Song.cont++ ;
+       // this.cont = Song.cont++;
     }   
 
 
@@ -47,15 +47,14 @@ class Song {
         return divListen;
     }
 
-    getNewElement(id, group, url, title, listeners) {
+    getNewElement(group, url, title, listeners) {
         let eleLi = this.setItemLi();
         let eleAgroup = this.setItemGroupName(group, url);
         let eleAsong = this.setItemSongTitle(title);
         let eleDivListeners = this.setListeners(listeners);
 
         let span = document.createElement('span');
-        let numberSong = document.createTextNode(id+".");
-        span.appendChild(numberSong);
+        span.classList.add('numbers');
 
         eleLi.appendChild(span);
         eleLi.appendChild(eleAgroup);
@@ -72,7 +71,7 @@ const loadSongs = (arraySongs) => {
     let ulLista = document.querySelector('.lista');
     ulLista.innerHTML = '';//resetea el contenido
     for (const obj of arraySongs) {
-        let li = obj.getNewElement(obj.cont, obj.group, obj.url, obj.title, obj.listeners);
+        let li = obj.getNewElement( obj.group, obj.url, obj.title, obj.listeners);
         ulLista.appendChild(li);
     }
 }
@@ -132,8 +131,7 @@ const urlFetch = async () => {
             let responseData = await response.json();
             for (const obj of responseData) {
                 let constructorObject = {genre: obj.genre ? obj.genre : null,group: obj.artist.name ? obj.artist.name : null,listeners: obj.listeners ? obj.listeners : null,title: obj.name ? obj.name : null,url: obj.artist.url ? obj.artist.url : null,}
-                let objSong = new Song(constructorObject);
-                songs.push(objSong);
+                songs.push(new Song(constructorObject));
             }
             loadOverview();
         } else {
