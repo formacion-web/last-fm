@@ -9,12 +9,14 @@ body {
 
 header {
   background-color: #222120;
-  text-align: center;
-  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 50px;
 }
 header > img {
-  width: 25px;
-  height: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
 /* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
@@ -27,7 +29,8 @@ header > img {
 }
 
 .genere > button {
-  margin: 2px;
+  margin: 10px;
+  font-size: 20px;
 }
 
 .filters > ul {
@@ -36,9 +39,9 @@ header > img {
 }
 
 .bckimage {
-  width: 25px;
-  height: 25px;
-  padding: 1px 1px;
+  width: 70px;
+  height: 70px;
+  padding: 10px 10px;
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
@@ -47,7 +50,6 @@ header > img {
   /* Resize the background image to cover the entire container */
   color: white;
   border: none;
-  font-size: 5px;
   box-sizing: content-box;
 }
 
@@ -77,12 +79,11 @@ header > img {
 
 .filter_list {
   list-style: none;
-  font-size: 5px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.filter_list {
-  display: inline-block;
-}
 .filter_list > a {
   text-decoration: none;
 }
@@ -96,21 +97,14 @@ header > img {
   color: #222;
 }
 
-.menu-item-selected {
-  font-size: 8px;
-}
-
-.lista {
-  font-size: 5px;
-}
 .lista > li {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
-  padding: 2px;
+  padding: 10px;
 }
 .lista > li > a {
-  margin: 0px 5px;
+  margin: 0px 10px;
 }
 .lista > li > div {
   margin-left: auto;
