@@ -1,36 +1,160 @@
-/* Colores:
-   $color-primary:  #222
-   $color-secondary: rgba(110, 69, 51, 1);
-   $color-focus-menu: #B90000; 
-   $color-background: #fff;
-   $color-list-odd: #f2f2f2;
-   
-*/
+$color-primary: #222;
+$color-secondary: rgba(110, 69, 51, 1);
+$color-focus-menu: #b90000;
+$color-background: #fff;
+$color-list-odd: #f2f2f2;
 
-/* Imágenes:
-logo: https://www.last.fm/static/images/logo_static_mob.0798d7258e3d.png
-rock: https://lastfm.freetls.fastly.net/i/u/avatar300s/366962d5733a4aee8bee4a136c239d47.jpg
-hip-hop: https://lastfm.freetls.fastly.net/i/u/avatar300s/51810a59cb17449bb2d6b8b62d63ce78.jpg
-indie:https://lastfm.freetls.fastly.net/i/u/avatar300s/c825233e09af4641a5ce7b6ece883aae.jpg
-jazz:https://lastfm.freetls.fastly.net/i/u/avatar300s/c0a9af93c8c843afb43cd6dc24b0bbf3.jpg
-reggae: https://lastfm.freetls.fastly.net/i/u/avatar300s/94428d295a60403e9327cbfb86e2fbf6.jpg
-*/
+* {
+  box-sizing: border-box;
+  font-family: "verdana", "times new roman", "sans-serif";
+  margin: 0;
+  padding: 0;
+  color: $color-primary ;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transition: width 1s, height 1s;
+  transition: width 1s, width 1s;
 
-/* Filtros: 
+}
 
-rock:   sepia(90%);
-hip-hop:contrast(200%);
-indie:  grayscale(50%);
-jazz:   hue-rotate(90deg);
-reggae: saturate(10%);
+header {
+  padding: 30px 0px 10px 0px;
+  background: $color-primary;
+  margin-bottom: 10px;
+  .content-logo {
+    width: 100px;
+    margin: 0 auto;
+  }
+}
 
-*/
+img {
+  display: block;
+  width: 100%;
+}
 
-/* Fuente:
-    font-family:Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif;
+.list-genero {
+  display: flex;
+  width: 800px;
+  margin: 0 auto;
+  li {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 15px;
+  }
+  .link {
+    color: $color-background;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
+    &:hover:after{
+        content: '';
+        position: absolute;
+        height: 1px;
+        background: $color-background;
+        top: 78px;
+        z-index: 100;
+    }
+    &_1:hover:after {
+        width: 41px;
+    }
+    &_2:hover:after {
+        width: 64px;
+    }
+    &_3:hover:after {
+        width: 42px;
+    }
+    &_4:hover:after {
+        width: 38px;
+    }
+    &_5:hover:after {
+        width: 60px;
+    }
+  }
+}
 
-*/
+.menu-item-selected{
+    margin-bottom: 30px;
+    padding-left: 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding-top: 20px;
+}
+
+.filter{
+    margin : 30px 0px  50px 0px;
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        li{
+            color: black;
+            font-weight: 600;
+            padding: 0px 20px;
+            a{
+              &:focus{
+                color:$color-focus-menu;
+              }
+
+            }
+            
+        }
+    }
+}
+
+
+
+.lista {
+  width: 100%;
+  counter-reset: counter-songs;//initial 0
+  li {
+    overflow: auto;
+    padding: 0px 10px;
+    width: 100%;
+    .numbers {
+      padding-left: 5px;
+      &:before{
+        counter-increment: counter-songs;//increment
+        content: counter(counter-songs) ". ";
+      }
+    }
+    a {
+      text-align: left;
+      line-height: 30px;
+      padding-left: 25px;
+      color: black;
+    }
+    a:nth-child(2) {
+      padding-left: 5px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    a:nth-child(3) {
+      font-weight: 700;
+    }
+    div {
+      float: right;
+      line-height: 30px;
+      font-size: 0.8em;
+      span {
+        padding-left: 5px;
+      }
+    }
+  }
+  li:nth-child(odd) {
+    background-color: $color-list-odd;
+  }
+}
+
+
 
 /* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
  */
-

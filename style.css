@@ -1,0 +1,119 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  font-family: "verdana", "times new roman", "sans-serif";
+  margin: 0;
+  padding: 0;
+  color: #222;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transition: width 1s, height 1s;
+  transition: width 1s, width 1s; }
+
+header {
+  padding: 30px 0px 10px 0px;
+  background: #222;
+  margin-bottom: 10px; }
+  header .content-logo {
+    width: 100px;
+    margin: 0 auto; }
+
+img {
+  display: block;
+  width: 100%; }
+
+.list-genero {
+  display: flex;
+  width: 800px;
+  margin: 0 auto; }
+  .list-genero li {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 15px; }
+  .list-genero .link {
+    color: #fff;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 100; }
+    .list-genero .link:hover:after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background: #fff;
+      top: 78px;
+      z-index: 100; }
+    .list-genero .link_1:hover:after {
+      width: 41px; }
+    .list-genero .link_2:hover:after {
+      width: 64px; }
+    .list-genero .link_3:hover:after {
+      width: 42px; }
+    .list-genero .link_4:hover:after {
+      width: 38px; }
+    .list-genero .link_5:hover:after {
+      width: 60px; }
+
+.menu-item-selected {
+  margin-bottom: 30px;
+  padding-left: 30px;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding-top: 20px; }
+
+.filter {
+  margin: 30px 0px  50px 0px; }
+  .filter ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; }
+    .filter ul li {
+      color: black;
+      font-weight: 600;
+      padding: 0px 20px; }
+      .filter ul li a:focus {
+        color: #b90000; }
+
+.lista {
+  width: 100%;
+  counter-reset: counter-songs; }
+  .lista li {
+    overflow: auto;
+    padding: 0px 10px;
+    width: 100%; }
+    .lista li .numbers {
+      padding-left: 5px; }
+      .lista li .numbers:before {
+        counter-increment: counter-songs;
+        content: counter(counter-songs) ". "; }
+    .lista li a {
+      text-align: left;
+      line-height: 30px;
+      padding-left: 25px;
+      color: black; }
+    .lista li a:nth-child(2) {
+      padding-left: 5px; }
+      .lista li a:nth-child(2):hover {
+        text-decoration: underline; }
+    .lista li a:nth-child(3) {
+      font-weight: 700; }
+    .lista li div {
+      float: right;
+      line-height: 30px;
+      font-size: 0.8em; }
+      .lista li div span {
+        padding-left: 5px; }
+  .lista li:nth-child(odd) {
+    background-color: #f2f2f2; }
+
+/* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
+ */
+
+/*# sourceMappingURL=style.css.map */
